@@ -298,9 +298,9 @@ footer{position:relative;z-index:1;padding-block:clamp(110px,18vh,200px) 40px}
 /* resources: a deck of equal cards that stack on top of one another as you scroll; the ones underneath ease back a little */
 .res-intro{margin:-12px 0 clamp(28px,4vw,48px);max-width:46ch;font-size:var(--step-1);line-height:1.35}
 .res-intro a{color:inherit;text-decoration-color:var(--gold);text-decoration-thickness:2px;text-underline-offset:4px}
-.res-stack{display:grid;gap:clamp(18px,3vh,32px);padding-bottom:4vh}
-.res{position:sticky;top:calc(clamp(84px,12vh,120px) + var(--i) * clamp(12px,1.6vh,20px));min-height:clamp(300px,44vh,400px);overflow:hidden;display:grid;grid-template-columns:minmax(0,1fr);align-content:start;
-  padding:clamp(24px,3vw,44px);border-radius:clamp(20px,2vw,32px);text-decoration:none;transform-origin:50% 0;
+.res-stack{display:grid;gap:clamp(10px,1.6vh,18px);padding-bottom:2vh}
+.res{--strip:clamp(56px,7vh,66px);position:sticky;top:calc(clamp(84px,12vh,120px) + var(--i) * var(--strip));min-height:clamp(260px,36vh,340px);overflow:hidden;display:grid;grid-template-columns:minmax(0,1fr);align-content:start;
+  padding:0 clamp(24px,3vw,44px) clamp(24px,3vw,44px);border-radius:clamp(20px,2vw,32px);text-decoration:none;transform-origin:50% 0;
   transform:scale(var(--sc,1)) rotate(var(--rot,0deg));transition:box-shadow .4s, filter .3s;box-shadow:0 -10px 30px -22px #1d386688,0 24px 40px -30px #1d3866aa}
 .res > *{position:relative}
 .res canvas{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
@@ -309,12 +309,17 @@ footer{position:relative;z-index:1;padding-block:clamp(110px,18vh,200px) 40px}
 .r-gold{background:linear-gradient(160deg,#f0bb5f,#e7aa4d 55%,#dc9a3e);color:var(--ink)}
 .r-cream{background:#e9e2c9;color:var(--blue)}
 .r-ink{background:linear-gradient(160deg,#24477f,#1d3866 60%,#152b4f);color:var(--cream)}
-.r-top{display:flex;justify-content:space-between;align-items:center;gap:16px}
+.r-top{position:relative;height:var(--strip);display:flex;justify-content:space-between;align-items:center;gap:16px}
+/* once a card is covered, its strip shows the card's name, so the whole pile stays readable */
+.r-mini{position:absolute;left:0;top:50%;translate:0 -50%;font-weight:700;font-size:clamp(18px,1.7vw,24px);letter-spacing:-.035em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:calc(100% - 90px);opacity:0;transition:opacity .35s}
+.r-kind{transition:opacity .35s}
+.res.covered .r-mini{opacity:1}
+.res.covered .r-kind{opacity:0}
 .r-kind{display:inline-flex;align-items:center;gap:.5em;font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase}
 .r-kind::before{content:"";width:.7em;height:.7em;border-radius:52% 46% 50% 48%;background:var(--gold)}
 .r-gold .r-kind::before{background:var(--blue)}
 .r-n{font-size:13px;font-weight:300;letter-spacing:.08em;font-variant-numeric:tabular-nums;opacity:.75}
-.r-name{margin-top:clamp(28px,5vh,56px);font-weight:700;font-size:clamp(40px,6.4vw,104px);line-height:.9;letter-spacing:-.055em;max-width:12ch;text-wrap:balance}
+.r-name{margin-top:clamp(12px,3vh,36px);font-weight:700;font-size:clamp(40px,6.4vw,104px);line-height:.9;letter-spacing:-.055em;max-width:12ch;text-wrap:balance}
 .r-desc{margin-top:clamp(14px,2vh,22px);font-size:clamp(15px,1.15vw,18px);line-height:1.45;max-width:52ch;opacity:.92}
 .r-go{margin-top:clamp(18px,2.6vh,28px);justify-self:start;font-size:15px;font-weight:600;padding:.6em 1.2em;border-radius:99px;background:color-mix(in srgb,currentColor 14%,transparent);transition:background .3s,color .3s,transform .35s cubic-bezier(.3,1.6,.5,1)}
 .res:hover .r-go,.res:focus-visible .r-go{background:var(--gold);color:var(--ink);transform:translateX(4px)}
@@ -442,11 +447,11 @@ footer{position:relative;z-index:1;padding-block:clamp(110px,18vh,200px) 40px}
     <p class="label" id="res-h" data-kicker="Free tools">Resources</p>
     <p class="res-intro">Tools that Dr. Taylor and his collaborators have created, free to use. If you have questions about how to use them, <a href="#contact">email Sam</a>.</p>
     <div class="res-stack">
-      <a class="res r-blue" href="https://docs.google.com/document/d/11GHs-22nEN9UNJ3MVLq-V8ZS8MVtG2FGaQ7hOCoL7hk/edit?usp=sharing" target="_blank" rel="noopener" style="--i:0"><canvas aria-hidden="true"></canvas><span class="r-top"><span class="r-kind">Scale</span><span class="r-n">01 / 05</span></span><span class="r-name">PARIS</span><span class="r-desc">Perceived Algorithm Responsiveness and Insensitivity Scale. This 15-item scale measures two variables: perceived algorithm responsiveness (PAR) and perceived algorithm insensitivity (PAI). It is validated for Facebook, Twitter, TikTok and Instagram; more information is in our Social Media + Society publication.</span><span class="r-go">Get the scale</span></a>
-      <a class="res r-gold" href="https://osf.io/uvwr6/" target="_blank" rel="noopener" style="--i:1"><canvas aria-hidden="true"></canvas><span class="r-top"><span class="r-kind">Open materials</span><span class="r-n">02 / 05</span></span><span class="r-name">Open Science Framework</span><span class="r-desc">For many studies you can find the preregistration, survey or experiment materials, data and code on the Open Science Framework. If you are looking for a specific scale or procedure, start on OSF.</span><span class="r-go">Go to OSF</span></a>
-      <a class="res r-ink" href="https://github.com/cornellsml/truman" target="_blank" rel="noopener" style="--i:2"><canvas aria-hidden="true"></canvas><span class="r-top"><span class="r-kind">Experiment platform</span><span class="r-n">03 / 05</span></span><span class="r-name">Truman</span><span class="r-desc">A social media simulation: a fake social networking site where participants are randomly assigned to conditions when they sign up, and interact with pre-programmed bots the researcher controls. Everything needed to replicate our experiments or run your own is on GitHub. Using Truman takes technical skills, especially JavaScript; more is in our CHI and CSCW papers.</span><span class="r-go">View on GitHub</span></a>
-      <a class="res r-cream" href="https://drive.google.com/drive/folders/1oiKRhQYJuxW4Vn5SB--9bD0lMGeieQBE?usp=sharing" target="_blank" rel="noopener" style="--i:3"><canvas aria-hidden="true"></canvas><span class="r-top"><span class="r-kind">Talks</span><span class="r-n">04 / 05</span></span><span class="r-name">Presentations and posters</span><span class="r-desc">A folder of slides from past conference presentations, colloquiums and job talks, plus a few academic posters.</span><span class="r-go">Open the folder</span></a>
-      <a class="res r-blue2" href="https://drive.google.com/drive/folders/1Q8nxloq3sJVYmZVH6bLl9iFaxhOrnXH9?usp=sharing" target="_blank" rel="noopener" style="--i:4"><canvas aria-hidden="true"></canvas><span class="r-top"><span class="r-kind">Papers</span><span class="r-n">05 / 05</span></span><span class="r-name">Research publications</span><span class="r-desc">Pre-print PDFs of some harder-to-find and in-press articles, such as book chapters. Email Sam for access to any other article.</span><span class="r-go">Open the folder</span></a>
+      <a class="res r-blue" href="https://docs.google.com/document/d/11GHs-22nEN9UNJ3MVLq-V8ZS8MVtG2FGaQ7hOCoL7hk/edit?usp=sharing" target="_blank" rel="noopener" style="--i:0"><canvas aria-hidden="true"></canvas><span class="r-top"><span class="r-kind">Scale</span><span class="r-mini" aria-hidden="true">PARIS</span><span class="r-n">01 / 05</span></span><span class="r-name">PARIS</span><span class="r-desc">Perceived Algorithm Responsiveness and Insensitivity Scale. This 15-item scale measures two variables: perceived algorithm responsiveness (PAR) and perceived algorithm insensitivity (PAI). It is validated for Facebook, Twitter, TikTok and Instagram; more information is in our Social Media + Society publication.</span><span class="r-go">Get the scale</span></a>
+      <a class="res r-gold" href="https://osf.io/uvwr6/" target="_blank" rel="noopener" style="--i:1"><canvas aria-hidden="true"></canvas><span class="r-top"><span class="r-kind">Open materials</span><span class="r-mini" aria-hidden="true">Open Science Framework</span><span class="r-n">02 / 05</span></span><span class="r-name">Open Science Framework</span><span class="r-desc">For many studies you can find the preregistration, survey or experiment materials, data and code on the Open Science Framework. If you are looking for a specific scale or procedure, start on OSF.</span><span class="r-go">Go to OSF</span></a>
+      <a class="res r-ink" href="https://github.com/cornellsml/truman" target="_blank" rel="noopener" style="--i:2"><canvas aria-hidden="true"></canvas><span class="r-top"><span class="r-kind">Experiment platform</span><span class="r-mini" aria-hidden="true">Truman</span><span class="r-n">03 / 05</span></span><span class="r-name">Truman</span><span class="r-desc">A social media simulation: a fake social networking site where participants are randomly assigned to conditions when they sign up, and interact with pre-programmed bots the researcher controls. Everything needed to replicate our experiments or run your own is on GitHub. Using Truman takes technical skills, especially JavaScript; more is in our CHI and CSCW papers.</span><span class="r-go">View on GitHub</span></a>
+      <a class="res r-cream" href="https://drive.google.com/drive/folders/1oiKRhQYJuxW4Vn5SB--9bD0lMGeieQBE?usp=sharing" target="_blank" rel="noopener" style="--i:3"><canvas aria-hidden="true"></canvas><span class="r-top"><span class="r-kind">Talks</span><span class="r-mini" aria-hidden="true">Presentations and posters</span><span class="r-n">04 / 05</span></span><span class="r-name">Presentations and posters</span><span class="r-desc">A folder of slides from past conference presentations, colloquiums and job talks, plus a few academic posters.</span><span class="r-go">Open the folder</span></a>
+      <a class="res r-blue2" href="https://drive.google.com/drive/folders/1Q8nxloq3sJVYmZVH6bLl9iFaxhOrnXH9?usp=sharing" target="_blank" rel="noopener" style="--i:4"><canvas aria-hidden="true"></canvas><span class="r-top"><span class="r-kind">Papers</span><span class="r-mini" aria-hidden="true">Research publications</span><span class="r-n">05 / 05</span></span><span class="r-name">Research publications</span><span class="r-desc">Pre-print PDFs of some harder-to-find and in-press articles, such as book chapters. Email Sam for access to any other article.</span><span class="r-go">Open the folder</span></a>
     </div>
   </section>
 </div>
@@ -1451,14 +1456,15 @@ footer{position:relative;z-index:1;padding-block:clamp(110px,18vh,200px) 40px}
   { const cards = [...document.querySelectorAll('.res')], rc = cards.map(c => c.querySelector('canvas'));
     const drawRes = time => { cards.forEach((card, n) => { const cv = rc[n], r = card.getBoundingClientRect(); if (r.bottom < 0 || r.top > innerHeight || !r.width || !holes.length) return;
         const next = cards[n + 1], nr = next && next.getBoundingClientRect(), cover = nr ? Math.min(1, Math.max(0, (r.bottom - nr.top) / r.height)) : 0;
-        if (!reduce) { card.style.setProperty('--sc', (1 - .06 * cover).toFixed(4)); card.style.setProperty('--rot', ((n % 2 ? 1 : -1) * 1.2 * cover).toFixed(3) + 'deg'); card.style.filter = cover > .02 ? `brightness(${(1 - .12 * cover).toFixed(3)})` : ''; }
+        if (!reduce) { card.style.setProperty('--sc', (1 - .02 * cover).toFixed(4)); card.style.setProperty('--rot', '0deg'); card.style.filter = cover > .02 ? `brightness(${(1 - .05 * cover).toFixed(3)})` : ''; }
+        card.classList.toggle('covered', cover > .3);
         const dpr = Math.min(2, devicePixelRatio || 1), w = Math.round(r.width * dpr), h = Math.round(r.height * dpr); if (cv.width !== w || cv.height !== h) { cv.width = w; cv.height = h; }
         const g = cv.getContext('2d'); g.setTransform(1, 0, 0, 1, 0, 0); g.clearRect(0, 0, w, h);
         g.fillStyle = card.classList.contains('r-cream') ? 'rgba(44,84,148,.85)' : card.classList.contains('r-gold') ? 'rgba(242,238,221,.88)' : 'rgba(242,238,221,.9)';
         const T = (isMobile() ? 700 : 1000) * dpr, k = T / TILE, ox = n * 137 * dpr, mob = isMobile();
         for (let ty = -1; ty * T < h + T; ty++) for (let tx = -1; tx * T < w + T; tx++) for (const hh of holes) {
           const x = (tx * TILE + hh.cx) * k - ox % T, y = (ty * TILE + hh.cy) * k; if (x < -30 || y < -30 || x > w + 30 || y > h + 30) continue;
-          const f = mob ? Math.max(0, 1 - y / (h * .3)) * Math.max(0, (x / w - .35) / .65) : Math.max(0, (x / w - .55) / .45); const fc = f * Math.min(1, Math.max(0, (y - 70 * dpr) / (50 * dpr)));   // keeps the corner counter clear
+          const f = mob ? Math.max(0, 1 - y / (h * .3)) * Math.max(0, (x / w - .35) / .65) : Math.max(0, (x / w - .55) / .45); const fc = f * Math.min(1, Math.max(0, (y - 70 * dpr) / (50 * dpr))) * (card.classList.contains('covered') ? 0 : 1);   // keeps the corner counter clear
           if (fc < .05) continue; const f2 = fc;
           const s2 = k * .8 * Math.min(1, f2 * 1.2) * (.85 + .15 * Math.sin(time * .9 + hh.ph)); g.setTransform(s2, 0, 0, s2, x, y); g.fill(hh.p); } }); };
     const loopRes = t => { drawRes(reduce ? 0 : t / 1000); requestAnimationFrame(loopRes); }; requestAnimationFrame(loopRes); }
