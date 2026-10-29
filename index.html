@@ -167,7 +167,7 @@ section{padding-block:clamp(90px,16vh,180px)}
 .card canvas.cnet{position:absolute;inset:0;width:100%;height:100%;display:block;pointer-events:none}
 a.card{text-decoration:none}
 .card .go{display:none}
-.card:hover{transform:translate(var(--hx,0),var(--hy,-8px)) rotate(var(--hr,1.5deg));box-shadow:0 30px 40px -26px #1d3866cc}
+.card:hover{background-color:var(--gold);background-image:none;color:var(--ink);transform:translate(var(--hx,0),var(--hy,-8px)) rotate(var(--hr,1.5deg));box-shadow:0 30px 40px -26px #1d3866cc}   /* turns gold, like before */
 /* every person's card is the same blue, so no one reads as different */
 .card{box-shadow:0 18px 30px -24px #1d386699}
 .card .c-n{position:absolute;top:clamp(12px,1.3vw,18px);right:clamp(14px,1.5vw,20px);font-size:11px;font-weight:300;letter-spacing:.08em;font-variant-numeric:tabular-nums;opacity:.75;z-index:2}
@@ -189,7 +189,7 @@ a.card{text-decoration:none}
   filter:drop-shadow(0 14px 20px rgba(20,38,67,.45))}   /* no rim: just a soft shadow */
 .photo{width:100%;height:100%;-webkit-mask-size:100% 100%;mask-size:100% 100%}
 .photo img{width:100%;height:100%;object-fit:cover;display:block}
-.card h3{position:relative;margin:0;font-weight:700;font-size:clamp(22px,2.1vw,34px);line-height:.92;letter-spacing:-.034em;text-wrap:balance}
+.card h3{position:relative;margin:0;font-weight:700;font-size:clamp(28px,2.7vw,44px);line-height:.92;letter-spacing:-.034em;text-wrap:balance}
 .card .role{position:relative;margin:.35em 0 0;font-weight:400;font-size:clamp(12px,.95vw,14px);line-height:1.3;letter-spacing:-.005em;opacity:.78}
 
 
@@ -413,11 +413,11 @@ footer{position:relative;z-index:1;padding-block:clamp(110px,18vh,200px) 40px}
   <section id="people" data-net="-0.03 0.0 0.17" data-net-m="-0.1 0.17 0.18" data-net-at="1 0.7">
     <p class="label" data-kicker="Who we are">People</p>
     <div class="people">
-      <a class="card" href="people/samuel-hardman-taylor.html"><div class="photo"><img src="assets/people/samuel-hardman-taylor.jpg" alt="Samuel Hardman Taylor" loading="lazy"></div><h3>Samuel Hardman Taylor</h3><p class="role">Director</p></a>
-      <article class="card"><div class="photo" role="img" aria-label="Photo placeholder"></div><h3>Name Surname</h3><p class="role">Role or title</p></article>
-      <article class="card"><div class="photo" role="img" aria-label="Photo placeholder"></div><h3>Name Surname</h3><p class="role">Role or title</p></article>
-      <article class="card"><div class="photo" role="img" aria-label="Photo placeholder"></div><h3>Name Surname</h3><p class="role">Role or title</p></article>
-      <article class="card"><div class="photo" role="img" aria-label="Photo placeholder"></div><h3>Name Surname</h3><p class="role">Role or title</p></article>
+      <a class="card" href="people/samuel-hardman-taylor.html"><div class="photo"><img src="assets/people/samuel-hardman-taylor.jpg" alt="Samuel Hardman Taylor" loading="lazy"></div><h3>Samuel Hardman Taylor</h3></a>
+      <article class="card"><div class="photo" role="img" aria-label="Photo placeholder"></div><h3>Name Surname</h3></article>
+      <article class="card"><div class="photo" role="img" aria-label="Photo placeholder"></div><h3>Name Surname</h3></article>
+      <article class="card"><div class="photo" role="img" aria-label="Photo placeholder"></div><h3>Name Surname</h3></article>
+      <article class="card"><div class="photo" role="img" aria-label="Photo placeholder"></div><h3>Name Surname</h3></article>
     </div>
   </section>
 
@@ -842,7 +842,6 @@ footer{position:relative;z-index:1;padding-block:clamp(110px,18vh,200px) 40px}
     // the people cards: the real net in the top of each card, breathing, fading out above the name
     const pcards = [...document.querySelectorAll('.people .card')].map((el, i) => { const cv = document.createElement('canvas'); cv.className = 'cnet'; cv.setAttribute('aria-hidden', 'true'); el.prepend(cv);
       const ph = el.querySelector('.photo'); if (ph) { const wr = document.createElement('span'); wr.className = 'ph-wrap'; ph.before(wr); wr.append(ph); }   // a cream rim and soft shadow so the photo stands out
-      if (el.tagName === 'A') { const go = document.createElement('span'); go.className = 'c-go'; go.textContent = 'View profile'; el.append(go); }
       return { el, cv, ph, off: [(i * .37 + .11) % 1, (i * .61 + .29) % 1], ink: 'rgba(242,238,221,.92)' }; });
     const drawPeople = now => {
       const time = reduce ? 0 : now / 1000;

@@ -100,7 +100,7 @@ People photos are used as they are, in natural colour with their original backgr
 
 ## People cards
 Cards are landscape (16:10): photo on the left, name and role on the right. They fill a grid of three across on wide screens, two on tablets and one on phones.
-Every card is the same blue (so no one reads as different), with the breathing cream net, a big tight name, and the photo in an organic blob with a soft shadow (no rim). On hover the card lifts and leans, the photo swells and turns slightly, and cards that link to a profile show a gold "View profile" pill (always shown on touch screens).
+Every card is the same blue (so no one reads as different), with the breathing cream net, a big tight name, and the photo in an organic blob with a soft shadow (no rim). Each card shows just the person's name, large. On hover the card turns gold, lifts and leans, and the photo swells and turns slightly.
 
 
 ## Apply card
