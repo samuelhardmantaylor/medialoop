@@ -306,6 +306,7 @@ footer{position:relative;z-index:1;padding-block:clamp(110px,18vh,200px) 40px}
 .res canvas{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
 .r-blue{background:linear-gradient(160deg,#3a6ab6,#2c5494 50%,#1f3f73);color:var(--cream)}
 .r-blue2{background:linear-gradient(200deg,#3a6ab6,#2c5494 55%,#1f3f73);color:var(--cream)}
+.r-egg{background:linear-gradient(160deg,#5b2d55,#45213f 55%,#2f1530);color:var(--cream)}   /* deep aubergine */
 .r-gold{background:linear-gradient(160deg,#f0bb5f,#e7aa4d 55%,#dc9a3e);color:var(--ink)}
 .r-cream{background:#e9e2c9;color:var(--blue)}
 .r-ink{background:linear-gradient(160deg,#24477f,#1d3866 60%,#152b4f);color:var(--cream)}
@@ -451,7 +452,7 @@ footer{position:relative;z-index:1;padding-block:clamp(110px,18vh,200px) 40px}
       <a class="res r-gold" href="https://osf.io/uvwr6/" target="_blank" rel="noopener" style="--i:1"><canvas aria-hidden="true"></canvas><span class="r-top"><span class="r-kind">Open materials</span><span class="r-mini" aria-hidden="true">Open Science Framework</span><span class="r-n">02 / 05</span></span><span class="r-name">Open Science Framework</span><span class="r-desc">For many studies you can find the preregistration, survey or experiment materials, data and code on the Open Science Framework. If you are looking for a specific scale or procedure, start on OSF.</span><span class="r-go">Go to OSF</span></a>
       <a class="res r-ink" href="https://github.com/cornellsml/truman" target="_blank" rel="noopener" style="--i:2"><canvas aria-hidden="true"></canvas><span class="r-top"><span class="r-kind">Experiment platform</span><span class="r-mini" aria-hidden="true">Truman</span><span class="r-n">03 / 05</span></span><span class="r-name">Truman</span><span class="r-desc">A social media simulation: a fake social networking site where participants are randomly assigned to conditions when they sign up, and interact with pre-programmed bots the researcher controls. Everything needed to replicate our experiments or run your own is on GitHub. Using Truman takes technical skills, especially JavaScript; more is in our CHI and CSCW papers.</span><span class="r-go">View on GitHub</span></a>
       <a class="res r-cream" href="https://drive.google.com/drive/folders/1oiKRhQYJuxW4Vn5SB--9bD0lMGeieQBE?usp=sharing" target="_blank" rel="noopener" style="--i:3"><canvas aria-hidden="true"></canvas><span class="r-top"><span class="r-kind">Talks</span><span class="r-mini" aria-hidden="true">Presentations and posters</span><span class="r-n">04 / 05</span></span><span class="r-name">Presentations and posters</span><span class="r-desc">A folder of slides from past conference presentations, colloquiums and job talks, plus a few academic posters.</span><span class="r-go">Open the folder</span></a>
-      <a class="res r-blue2" href="https://drive.google.com/drive/folders/1Q8nxloq3sJVYmZVH6bLl9iFaxhOrnXH9?usp=sharing" target="_blank" rel="noopener" style="--i:4"><canvas aria-hidden="true"></canvas><span class="r-top"><span class="r-kind">Papers</span><span class="r-mini" aria-hidden="true">Research publications</span><span class="r-n">05 / 05</span></span><span class="r-name">Research publications</span><span class="r-desc">Pre-print PDFs of some harder-to-find and in-press articles, such as book chapters. Email Sam for access to any other article.</span><span class="r-go">Open the folder</span></a>
+      <a class="res r-egg" href="https://drive.google.com/drive/folders/1Q8nxloq3sJVYmZVH6bLl9iFaxhOrnXH9?usp=sharing" target="_blank" rel="noopener" style="--i:4"><canvas aria-hidden="true"></canvas><span class="r-top"><span class="r-kind">Papers</span><span class="r-mini" aria-hidden="true">Research publications</span><span class="r-n">05 / 05</span></span><span class="r-name">Research publications</span><span class="r-desc">Pre-print PDFs of some harder-to-find and in-press articles, such as book chapters. Email Sam for access to any other article.</span><span class="r-go">Open the folder</span></a>
     </div>
   </section>
 </div>
@@ -850,7 +851,7 @@ footer{position:relative;z-index:1;padding-block:clamp(110px,18vh,200px) 40px}
         const dpr = Math.min(2, devicePixelRatio || 1), w = Math.round(r.width * dpr), h = Math.round(r.height * dpr);
         if (cv.width !== w || cv.height !== h) { cv.width = w; cv.height = h; }
         const g = cv.getContext('2d'); g.setTransform(1, 0, 0, 1, 0, 0); g.globalCompositeOperation = 'source-over'; g.clearRect(0, 0, w, h);
-        const tilePx = (isMobile() ? 820 : 1100) * dpr, k = tilePx / TILE, bx0 = -off[0] * tilePx, by0 = -off[1] * tilePx;
+        const tilePx = (isMobile() ? 820 : 1100) * dpr * [1, .75, 1.25, .9, 1.1][pcards.findIndex(p => p.el === el) % 5], k = tilePx / TILE, bx0 = -off[0] * tilePx, by0 = -off[1] * tilePx;
         g.fillStyle = ink;
         for (let ty = 0; ty <= Math.ceil(h / tilePx) + 1; ty++) for (let tx = 0; tx <= Math.ceil(w / tilePx) + 1; tx++)
           for (const hh of holes) {
@@ -1451,6 +1452,15 @@ footer{position:relative;z-index:1;padding-block:clamp(110px,18vh,200px) 40px}
   }
 
 
+  /* every card gets its own patch of net: a different shape, place and hole size (u, v are 0..1 across the card) */
+  const sstep = v => { v = Math.max(0, Math.min(1, v)); return v * v * (3 - 2 * v); };
+  const NETS = [
+    { k: 1,    f: (u, v, a) => sstep((.62 - Math.hypot((u - 1.05) * a, v - .5) / a) / .35) },                                   // a big round blot off the right edge
+    { k: .7,   f: (u, v, a) => sstep((.62 - v + .06 * Math.sin(u * 9)) / .3) * sstep((u - .25) / .3) },                          // a wavy band across the top
+    { k: 1.3,  f: (u, v, a) => sstep(((u - .55) + (v - .5) * .5) / .3) * sstep((1.05 - u + .1 * Math.sin(v * 7)) / .1) },      // a slanted band down the right side
+    { k: .9,   f: (u, v, a) => { const d = Math.hypot((u - .86) * a, v - .5) / a; return sstep((.3 - Math.abs(d - .26)) / .12); } },   // a ring
+    { k: 1.15, f: (u, v, a) => Math.max(sstep((.48 - Math.hypot((u - .95) * a, v - 1.02) / a) / .3), sstep((.14 - Math.hypot((u - .7) * a, v - .28) / a) / .1)) }   // bottom-right blot with a small drop above
+  ];
   /* resources deck: the net breathes on the right of each card, and cards that have been stacked over ease back and tilt slightly */
   { const cards = [...document.querySelectorAll('.res')], rc = cards.map(c => c.querySelector('canvas'));
     const drawRes = time => { cards.forEach((card, n) => { const cv = rc[n], r = card.getBoundingClientRect(); if (r.bottom < 0 || r.top > innerHeight || !r.width || !holes.length) return;
@@ -1460,10 +1470,13 @@ footer{position:relative;z-index:1;padding-block:clamp(110px,18vh,200px) 40px}
         const dpr = Math.min(2, devicePixelRatio || 1), w = Math.round(r.width * dpr), h = Math.round(r.height * dpr); if (cv.width !== w || cv.height !== h) { cv.width = w; cv.height = h; }
         const g = cv.getContext('2d'); g.setTransform(1, 0, 0, 1, 0, 0); g.clearRect(0, 0, w, h);
         g.fillStyle = card.classList.contains('r-cream') ? 'rgba(44,84,148,.85)' : card.classList.contains('r-gold') ? 'rgba(242,238,221,.88)' : 'rgba(242,238,221,.9)';
-        const T = (isMobile() ? 700 : 1000) * dpr, k = T / TILE, ox = n * 137 * dpr, mob = isMobile();
+        const boxes = [...card.querySelectorAll('.r-name, .r-desc, .r-go, .r-kind, .r-n')].map(e => { const b = e.getBoundingClientRect(); return [(b.left - r.left) * dpr, (b.top - r.top) * dpr, (b.right - r.left) * dpr, (b.bottom - r.top) * dpr]; });
+        const NS = NETS[n % NETS.length], T = (isMobile() ? 700 : 1000) * dpr * NS.k, k = T / TILE, ox = n * 137 * dpr, mob = isMobile(), asp = w / h;
         for (let ty = -1; ty * T < h + T; ty++) for (let tx = -1; tx * T < w + T; tx++) for (const hh of holes) {
           const x = (tx * TILE + hh.cx) * k - ox % T, y = (ty * TILE + hh.cy) * k; if (x < -30 || y < -30 || x > w + 30 || y > h + 30) continue;
-          const f = mob ? Math.max(0, 1 - y / (h * .3)) * Math.max(0, (x / w - .35) / .65) : Math.max(0, (x / w - .55) / .45); const fc = f * Math.min(1, Math.max(0, (y - 70 * dpr) / (50 * dpr))) * (card.classList.contains('covered') ? 0 : 1);   // keeps the corner counter clear
+          let f = mob ? Math.max(0, 1 - y / (h * .3)) * Math.max(0, (x / w - .35) / .65) * NS.f(x / w, .3, asp) * 1.6 : NS.f(x / w, y / h, asp);
+          for (const [x0, y0, x1, y1] of boxes) { const dx = Math.max(0, x0 - x, x - x1), dy = Math.max(0, y0 - y, y - y1); f *= sstep((Math.hypot(dx, dy) - 8 * dpr) / (34 * dpr)); }   // never behind the words
+          const fc = f * Math.min(1, Math.max(0, (y - 70 * dpr) / (50 * dpr))) * (card.classList.contains('covered') ? 0 : 1);   // keeps the corner counter clear
           if (fc < .05) continue; const f2 = fc;
           const s2 = k * .8 * Math.min(1, f2 * 1.2) * (.85 + .15 * Math.sin(time * .9 + hh.ph)); g.setTransform(s2, 0, 0, s2, x, y); g.fill(hh.p); } }); };
     const loopRes = t => { drawRes(reduce ? 0 : t / 1000); requestAnimationFrame(loopRes); }; requestAnimationFrame(loopRes); }
@@ -1473,7 +1486,8 @@ footer{position:relative;z-index:1;padding-block:clamp(110px,18vh,200px) 40px}
     const drawEvc = time => evs.forEach((card, n) => { const cv = card.querySelector('.ev-cv'), r = card.getBoundingClientRect(); if (!cv || r.bottom < 0 || r.top > innerHeight || !r.width || !holes.length) return;
       const dpr = Math.min(2, devicePixelRatio || 1), w = Math.round(r.width * dpr), h = Math.round(r.height * dpr); if (cv.width !== w || cv.height !== h) { cv.width = w; cv.height = h; }
       const g = cv.getContext('2d'); g.setTransform(1, 0, 0, 1, 0, 0); g.clearRect(0, 0, w, h); g.fillStyle = 'rgba(242,238,221,.9)';
-      const T = 700 * dpr, k = T / TILE, ox = (n * 211 * dpr) % T, cx = w, cy = 0, R = Math.min(w, h) * .62;
+      const EV = [[1, 0, .62, 1], [1.02, .42, .5, 1.3], [.62, -.04, .5, .8], [1.04, .12, .75, 1.1]][n % 4];   // each card's patch sits somewhere different, with its own hole size
+      const T = 700 * dpr * EV[3], k = T / TILE, ox = (n * 211 * dpr) % T, cx = w * EV[0], cy = h * EV[1], R = Math.min(w, h) * EV[2];
       for (let ty = -1; ty * T < h + T; ty++) for (let tx = -1; tx * T < w + T; tx++) for (const hh of holes) {
         const x = (tx * TILE + hh.cx) * k - ox, y = (ty * TILE + hh.cy) * k; if (x < -30 || y < -30 || x > w + 30 || y > h + 30) continue;
         let f = Math.max(0, 1 - Math.hypot(x - cx, y - cy) / R); f *= Math.min(1, Math.max(0, (y - 40 * dpr) / (30 * dpr)) + Math.max(0, (w - x - 40 * dpr) / (30 * dpr)) + .4);
