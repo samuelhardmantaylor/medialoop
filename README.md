@@ -99,6 +99,7 @@ People photos are used as they are, in natural colour with their original backgr
 
 
 ## People cards
+The cards sit in one row that slides sideways (swipe, trackpad, mouse drag, or the blue and gold arrow buttons under it), so each card keeps a comfortable width however many people there are; on phones about one and a half cards show at a time.
 Every card is the same blue (so no one reads as different), with the breathing cream net, a big tight name, and the photo in an organic blob with a soft shadow (no rim). On hover the card lifts and leans, the photo swells and turns slightly, and cards that link to a profile show a gold "View profile" pill (always shown on touch screens).
 
 
