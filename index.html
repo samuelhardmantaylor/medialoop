@@ -124,6 +124,7 @@ section{padding-block:clamp(90px,16vh,180px)}
 
 /* about */
 .statement{margin:0;font-size:var(--step-2);line-height:1.18;letter-spacing:-.015em;max-width:22ch;text-wrap:balance}
+.statement.intro+.statement.intro{margin-top:1em}
 .statement.intro{font-size:var(--step-1);line-height:1.38;letter-spacing:-.01em;max-width:40ch;text-wrap:pretty}
 .statement .w{opacity:var(--o,1);transition:opacity .25s linear}
 .about-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(20px,3vw,48px);margin-top:clamp(56px,9vw,120px);max-width:1100px}
@@ -397,7 +398,8 @@ footer{position:relative;z-index:1;padding-block:clamp(110px,18vh,200px) 40px}
 
   <section id="about" data-net="-0.03 0.0 0.17" data-net-m="-0.1 0.17 0.18" data-net-at="0 0.35">
     <p class="label" data-kicker="What we do">A Little About Us</p>
-    <p class="statement intro" id="statement">We are a gathering of researchers with a fondness for complicated questions, unexpected connections, and ideas that become more interesting when passed between people. We believe knowledge is not made in isolation, but through a continual exchange of perspectives, experiments, conversation, and discovery. There is something rather lovely about an idea that leaves one mind, finds another, and returns changed.</p>
+    <p class="statement intro" id="statement">We are a gathering of researchers with a fondness for complicated questions, unexpected connections, and ideas that become more interesting when passed between people. We believe knowledge is not made in isolation, but through a continual exchange of perspectives, experiments, conversation, and discovery.</p>
+    <p class="statement intro">There is something rather lovely about an idea that leaves one mind, finds another, and returns changed.</p>
     <div class="about-grid">
       <article>
         <h3>What holds our attention</h3>
