@@ -363,6 +363,10 @@ footer{position:relative;z-index:1;padding-block:clamp(110px,18vh,200px) 40px}
 .label.on .lt{opacity:1;translate:0 0}
 .label.on .stop{transform:none}
 @media (prefers-reduced-motion:reduce){.label .lt{opacity:1;translate:none;transition:none}.label .stop{transform:none;transition:none}}
+
+/* a small surprise: on each visit a few cards light up in lavender or plum instead of their usual hover colour */
+.people .card.s-lav:hover,.ev.s-lav:hover{background-color:#bfb1d2;background-image:linear-gradient(160deg,#cfc3dd,#bfb1d2 55%,#a998c0);color:var(--blue)}
+.people .card.s-plum:hover,.ev.s-plum:hover{background-color:#57385a;background-image:linear-gradient(160deg,#6b4a6e,#57385a 55%,#3f2742);color:var(--cream)}
 </style>
 </head>
 <body>
@@ -1506,6 +1510,10 @@ footer{position:relative;z-index:1;padding-block:clamp(110px,18vh,200px) 40px}
         const f = mob ? Math.max(0, 1 - y / (h * .28)) * Math.max(0, (x / w - .45) / .55) : Math.max(0, (x / w - .58) / .42); if (f < .05) continue;
         const s2 = k * .8 * Math.min(1, f * 1.2) * (.85 + .15 * Math.sin(time * .9 + hh.ph)); g.setTransform(s2, 0, 0, s2, x, y); g.fill(hh.p); } };
     const loopAp = t => { drawAp(reduce ? 0 : t / 1000); requestAnimationFrame(loopAp); }; requestAnimationFrame(loopAp); }
+
+  /* each visit, roughly one card in four quietly swaps its hover colour for lavender mist or dusky plum */
+  { const pool = [...document.querySelectorAll('.people .card, .ev')];
+    pool.forEach(el => { if (Math.random() < .26) el.classList.add(Math.random() < .5 ? 's-lav' : 's-plum'); }); }
 
   /* entrances: a gentle, staggered fade-and-rise as things come into view */
   (() => {

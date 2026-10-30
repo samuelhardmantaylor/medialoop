@@ -105,3 +105,7 @@ Every card is the same blue (so no one reads as different), with the breathing c
 
 ## Apply card
 In Contact, after the email address: a big gold "Apply" card with blue type (same style as the resource cards, with the breathing net on its right) saying the collective is affiliated with UIC Communication and that PhD and Master's applicants are welcome. Its "More information" button goes to https://comm.uic.edu/academics/graduate-studies/prospective-students/ (the link used on samuelhardman.com).
+
+
+## Hover surprise
+On each visit, about one in four people and event cards is quietly picked to light up in lavender mist or dusky plum on hover instead of its usual gold or cream. Which cards, and which colour, changes every time the page loads. The chance is the `.26` in the script, just before the entrances code.
