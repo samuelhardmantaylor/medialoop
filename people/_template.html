@@ -336,6 +336,14 @@ footer{position:relative;z-index:1;padding-block:clamp(110px,18vh,200px) 40px}
 .label.on .stop{transform:none}
 @media (prefers-reduced-motion:reduce){.label .lt{opacity:1;translate:none;transition:none}.label .stop{transform:none;transition:none}}
 .person .label{--hd:clamp(44px,5.2vw,92px)}
+
+/* research interests as compact tags: same colours and net, but small, wrapping onto as many rows as needed */
+.p-topics{display:flex !important;flex-wrap:wrap;gap:10px 12px !important;max-width:none !important}
+.p-topics li{aspect-ratio:auto !important;min-height:0;width:auto;flex:0 1 auto;flex-direction:row;align-items:center;justify-content:flex-start;
+  padding:14px 92px 14px 18px !important;border-radius:16px}
+.p-topics strong{font-size:clamp(15px,1.1vw,18px) !important;line-height:1.15;letter-spacing:-.018em;white-space:nowrap}
+.p-topics li:hover{transform:translateY(-4px) rotate(calc(var(--hr,1.5deg) * .6))}
+@media (max-width:560px){.p-topics strong{white-space:normal}}
 </style>
 <script>
   /* always open a person page at the top (also inside previews that keep an outer scroll position) */
@@ -520,17 +528,17 @@ footer{position:relative;z-index:1;padding-block:clamp(110px,18vh,200px) 40px}
       const dpr = Math.min(2, devicePixelRatio || 1), w = Math.round(r.width * dpr), h = Math.round(r.height * dpr);
       if (cv.width !== w || cv.height !== h) { cv.width = w; cv.height = h; }
       const g = cv.getContext('2d'); g.setTransform(1, 0, 0, 1, 0, 0); g.globalCompositeOperation = 'source-over'; g.clearRect(0, 0, w, h);
-      const tilePx = (mobile() ? 820 : 1100) * dpr, k = tilePx / TILE, bx0 = -off[0] * tilePx, by0 = -off[1] * tilePx;
+      const tilePx = (mobile() ? 520 : 620) * dpr, k = tilePx / TILE, bx0 = -off[0] * tilePx, by0 = -off[1] * tilePx;
       g.fillStyle = ink;
       for (let ty = 0; ty <= Math.ceil(h / tilePx) + 1; ty++) for (let tx = 0; tx <= Math.ceil(w / tilePx) + 1; tx++)
         for (const hh of holes) {
           const px = bx0 + tx * tilePx + hh.cx * k, py = by0 + ty * tilePx + hh.cy * k;
-          if (px < -30 || py < -30 || px > w + 30 || py > h * .8) continue;
+          if (px < w - 100 * dpr || py < -30 || px > w + 30 || py > h + 30) continue;
           const s = .62 + .3 * (.5 + .5 * Math.sin(time * .9 - (px + py) / w * 3 + hh.ph * .35));
           g.setTransform(k * s, 0, 0, k * s, px, py); g.fill(hh.p);
         }
       g.setTransform(1, 0, 0, 1, 0, 0); g.globalCompositeOperation = 'destination-in';       // fade the net out above the words
-      const f = g.createLinearGradient(0, 0, 0, h); f.addColorStop(0, '#000'); f.addColorStop(.22, '#000'); f.addColorStop(.5, 'rgba(0,0,0,0)'); f.addColorStop(1, 'rgba(0,0,0,0)');
+      const f = g.createLinearGradient(w, 0, w - 84 * dpr, 0); f.addColorStop(0, '#000'); f.addColorStop(.35, '#000'); f.addColorStop(1, 'rgba(0,0,0,0)');
       g.fillStyle = f; g.fillRect(0, 0, w, h); g.globalCompositeOperation = 'source-over';
     }
   };
