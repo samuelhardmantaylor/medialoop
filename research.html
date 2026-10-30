@@ -374,6 +374,9 @@ footer{position:relative;z-index:1;padding-block:clamp(110px,18vh,200px) 40px}
 .label.on .lt{opacity:1;translate:0 0}
 .label.on .stop{transform:none}
 @media (prefers-reduced-motion:reduce){.label .lt{opacity:1;translate:none;transition:none}.label .stop{transform:none;transition:none}}
+.r-list a:not([href]){cursor:default}
+.r-yr{font-size:clamp(76px,11vw,176px)}
+.r-year[data-y="In press"] .r-yr{font-size:clamp(48px,6vw,96px);line-height:.9}
 </style>
 <script>
   /* always open a person page at the top (also inside previews that keep an outer scroll position) */
@@ -402,27 +405,99 @@ footer{position:relative;z-index:1;padding-block:clamp(110px,18vh,200px) 40px}
   <a class="back" href="index.html#publications"><span class="arr back-arr" aria-hidden="true"></span> Home</a>
   <header class="r-hero">
     <h1 class="r-h" id="r-h">Research</h1>
-    <p class="r-sub">Research highlights from the medialoop collective, newest first. <span class="t4">Pre-prints of harder-to-find articles are in the <a href="https://drive.google.com/drive/folders/1Q8nxloq3sJVYmZVH6bLl9iFaxhOrnXH9?usp=sharing" target="_blank" rel="noopener">publications folder</a>; email Sam for access to anything else.</span></p>
+    <p class="r-sub">Publications from the medialoop collective, newest first. <span class="t4">Pre-prints of harder-to-find articles are in the <a href="https://drive.google.com/drive/folders/1Q8nxloq3sJVYmZVH6bLl9iFaxhOrnXH9?usp=sharing" target="_blank" rel="noopener">publications folder</a>; email Sam for access to anything else.</span></p>
   </header>
   <div class="r-years">
+    <section class="r-year" data-y="In press">
+      <h2 class="r-yr">In press</h2>
+      <ul class="r-list">
+        <li data-t="journal"><a aria-disabled="true"><span class="r-type">Journal article</span><span class="r-ttl"><span class="r-tm">Communication anxiety to psychological reliance: The role of need satisfaction in AI-assisted communication</span></span><span class="r-meta">Choi, M., Choung, H., Shin, I., &amp; Taylor, S. H. · Journal of Media Psychology</span></a></li>
+        <li data-t="chapter"><a aria-disabled="true"><span class="r-type">Book chapter</span><span class="r-ttl"><span class="r-tm">Social connectedness: Dimensions and measures</span></span><span class="r-meta">Bershad, A., Gu, X., Leknes, S., O’Connor, M., Shaham, Y., Silani, G., Taylor, S. H., Tschacher, W., &amp; Winter, N. R. · Social Connection: Constructs, Mechanisms, and Implications for Substance Abuse (Springer)</span></a></li>
+      </ul>
+    </section>
+    <section class="r-year" data-y="2026">
+      <h2 class="r-yr">2026</h2>
+      <ul class="r-list">
+        <li data-t="journal"><a href="https://doi.org/10.1177/0093650226149487" target="_blank" rel="noopener"><span class="r-type">Journal article</span><span class="r-ttl"><span class="r-tm">Testing hypotheses from the social approval theory of online hate: An analysis of 110 million posts from Parler</span></span><span class="r-meta">Markowitz, D. M., &amp; Taylor, S. H. · Communication Research</span></a></li>
+        <li data-t="journal"><a href="https://doi.org/10.1177/2056305126149637" target="_blank" rel="noopener"><span class="r-type">Journal article</span><span class="r-ttl"><span class="r-tm">Exploring the predictors and outcomes of perceived algorithm responsiveness in social media feeds: Combining longitudinal and computational methods</span></span><span class="r-meta">Taylor, S. H., &amp; Markowitz, D. M. · Social Media + Society</span></a></li>
+        <li data-t="journal"><a href="https://doi.org/10.1177/00936502261459750" target="_blank" rel="noopener"><span class="r-type">Journal article</span><span class="r-ttl"><span class="r-tm">When the algorithm understands you (or doesn’t): LGBTQ+ youth’s interaction with algorithmic media and identity formation</span></span><span class="r-meta">Chen, Y. A., &amp; Taylor, S. H. · Communication Research</span></a></li>
+        <li data-t="chapter"><a aria-disabled="true"><span class="r-type">Book chapter</span><span class="r-ttl"><span class="r-tm">Bringing people closer together?: Theorizing how algorithms influence interpersonal communication processes and personal relationships</span></span><span class="r-meta">Taylor, S. H., &amp; Choi, M. · The Handbook of Relational and Computer-Mediated Communication</span></a></li>
+      </ul>
+    </section>
     <section class="r-year" data-y="2024">
       <h2 class="r-yr">2024</h2>
       <ul class="r-list">
-        <li data-t="journal"><a href="https://doi.org/10.1093/jcmc/zmae017" target="_blank" rel="noopener"><span class="r-type">Journal article</span><span class="r-ttl"><span class="r-tm">The Lonely Algorithm Problem</span></span><span class="r-meta">Taylor, S. H., &amp; Chen, Y. A. · Journal of Computer-Mediated Communication</span></a></li>
-        <li data-t="journal"><a href="https://www.sciencedirect.com/science/article/pii/S0747563223003266" target="_blank" rel="noopener"><span class="r-type">Journal article</span><span class="r-ttl"><span class="r-tm">Parenting TikTok</span></span><span class="r-meta">Taylor, S. H., &amp; Brisini, K. S. C. · Computers in Human Behavior</span></a></li>
+        <li data-t="journal"><a href="https://doi.org/10.1093/jcmc/zmae017" target="_blank" rel="noopener"><span class="r-type">Journal article</span><span class="r-ttl"><span class="r-tm">The lonely algorithm problem: The relationship between algorithmic personalization and social connectedness on TikTok</span></span><span class="r-meta">Taylor, S. H., &amp; Chen, Y. A. · Journal of Computer-Mediated Communication</span></a></li>
+        <li data-t="journal"><a href="https://doi.org/10.1177/20563051231224721" target="_blank" rel="noopener"><span class="r-type">Journal article</span><span class="r-ttl"><span class="r-tm">Who’s viewing this?: Extending the imagined audience process model towards affordances and self-disclosure goals on Instagram</span></span><span class="r-meta">Yao, Y., Taylor, S. H., &amp; Leiser, S. · Social Media + Society</span></a></li>
+        <li data-t="journal"><a href="https://doi.org/10.1027/1864-1105/a000409" target="_blank" rel="noopener"><span class="r-type">Journal article</span><span class="r-ttl"><span class="r-tm">Are you as attractive on social media as you think?: Asymmetrical perception of sharing emotion on Facebook</span></span><span class="r-meta">Choi, M., &amp; Taylor, S. H. · Journal of Media Psychology</span></a></li>
+        <li data-t="journal"><a href="https://doi.org/10.1016/j.chb.2023.107975" target="_blank" rel="noopener"><span class="r-type">Journal article</span><span class="r-ttl"><span class="r-tm">Parenting the TikTok algorithm: An algorithm awareness as process approach to online risks and opportunities</span></span><span class="r-meta">Taylor, S. H., &amp; Brisini, K. S. · Computers in Human Behavior</span></a></li>
+        <li data-t="journal"><a href="https://doi.org/10.1080/15267431.2023.2264264" target="_blank" rel="noopener"><span class="r-type">Journal article</span><span class="r-ttl"><span class="r-tm">The spillover of parenting stress onto interparental conflict communication: A relational turbulence theory perspective</span></span><span class="r-meta">Brisini, K. S., &amp; Taylor, S. H. · Journal of Family Communication</span></a></li>
+      </ul>
+    </section>
+    <section class="r-year" data-y="2023">
+      <h2 class="r-yr">2023</h2>
+      <ul class="r-list">
+        <li data-t="journal"><a href="https://doi.org/10.1177/02654075231156623" target="_blank" rel="noopener"><span class="r-type">Journal article</span><span class="r-ttl"><span class="r-tm">Lonely algorithms: A longitudinal investigation into the bidirectional relationship between social media algorithms and loneliness</span></span><span class="r-meta">Taylor, S. H., &amp; Choi, M. · Journal of Social and Personal Relationships</span></a></li>
       </ul>
     </section>
     <section class="r-year" data-y="2022">
       <h2 class="r-yr">2022</h2>
       <ul class="r-list">
-        <li data-t="journal"><a href="https://doi.org/10.1177/20563051221144322" target="_blank" rel="noopener"><span class="r-type">Journal article</span><span class="r-ttl"><span class="r-tm">Algorithm Responsiveness</span></span><span class="r-meta">Taylor, S. H., &amp; Choi, M. · Social Media + Society</span></a></li>
+        <li data-t="journal"><a href="https://doi.org/10.1177/20563051221144322" target="_blank" rel="noopener"><span class="r-type">Journal article</span><span class="r-ttl"><span class="r-tm">An initial conceptualization of algorithm responsiveness: Comparing algorithm perceptions across social media platforms</span></span><span class="r-meta">Taylor, S. H., &amp; Choi, M. · Social Media + Society</span></a></li>
+        <li data-t="journal"><a href="https://doi.org/10.1093/joc/jqac017" target="_blank" rel="noopener"><span class="r-type">Journal article</span><span class="r-ttl"><span class="r-tm">Trusting on the shoulders of open giants? Open science increases trust in science for public and academics</span></span><span class="r-meta">Song, H., Markowitz, D. M., &amp; Taylor, S. H. · Journal of Communication</span></a></li>
+        <li data-t="journal"><a href="https://doi.org/10.1016/j.copsyc.2021.12.004" target="_blank" rel="noopener"><span class="r-type">Journal article</span><span class="r-ttl"><span class="r-tm">Social media and close relationships: A puzzle of connection and disconnection</span></span><span class="r-meta">Taylor, S. H., Zhao, P., &amp; Bazarova, N. N. · Current Opinions in Psychology</span></a></li>
       </ul>
     </section>
     <section class="r-year" data-y="2021">
       <h2 class="r-yr">2021</h2>
       <ul class="r-list">
-        <li data-t="journal"><a href="https://academic.oup.com/jcmc/article/26/4/187/6357206" target="_blank" rel="noopener"><span class="r-type">Journal article</span><span class="r-ttl"><span class="r-tm">Always Online, Always Available</span></span><span class="r-meta">Taylor, S. H., &amp; Bazarova, N. N. · Journal of Computer-Mediated Communication</span></a></li>
-        <li data-t="journal"><a href="#" aria-disabled="true"><span class="r-type">Journal article</span><span class="r-ttl"><span class="r-tm">Open Science in Communication</span></span><span class="r-meta">Markowitz, D. M., Song, H., &amp; Taylor, S. H. · Journal of Communication</span></a></li>
+        <li data-t="journal"><a href="https://doi.org/10.1093/joc/jqab030" target="_blank" rel="noopener"><span class="r-type">Journal article</span><span class="r-ttl"><span class="r-tm">Tracing the adoption and effects of open science in communication</span></span><span class="r-meta">Markowitz, D. M., Song, H., &amp; Taylor, S. H. · Journal of Communication</span></a></li>
+        <li data-t="journal"><a href="https://doi.org/10.1093/jcmc/zmab004" target="_blank" rel="noopener"><span class="r-type">Journal article</span><span class="r-ttl"><span class="r-tm">Always available, always attached: A relational perspective on the effects of mobile phones and social media on subjective well-being</span></span><span class="r-meta">Taylor, S. H., &amp; Bazarova, N. N. · Journal of Computer-Mediated Communication</span></a></li>
+      </ul>
+    </section>
+    <section class="r-year" data-y="2020">
+      <h2 class="r-yr">2020</h2>
+      <ul class="r-list">
+        <li data-t="journal"><a href="https://doi.org/10.1177/0093650217741029" target="_blank" rel="noopener"><span class="r-type">Journal article</span><span class="r-ttl"><span class="r-tm">Initial specification and empirical test of media enjoyment theory</span></span><span class="r-meta">Taylor, S. H., Ledbetter, A. M., &amp; Mazer, J. P. · Communication Research</span></a></li>
+        <li data-t="chapter"><a aria-disabled="true"><span class="r-type">Book chapter</span><span class="r-ttl"><span class="r-tm">Family communication in the technological context: The case study of unicorn_b2</span></span><span class="r-meta">Taylor, S. H. · Communication in family contexts: Applying theories and processes to family relationships</span></a></li>
+      </ul>
+    </section>
+    <section class="r-year" data-y="2019">
+      <h2 class="r-yr">2019</h2>
+      <ul class="r-list">
+        <li data-t="conf"><a href="https://doi.org/10.1145/3359220" target="_blank" rel="noopener"><span class="r-type">Conference paper</span><span class="r-ttl"><span class="r-tm">Accountability and empathy by design: Encouraging bystander interventions to cyberbullying on social media</span></span><span class="r-meta">Taylor, S. H., DiFranzo, D., Choi, Y. H., Sannon, S., &amp; Bazarova, N. N. · Proceedings of the ACM Conference on Computer-Supported Cooperative Work and Social Computing (CSCW ’19)</span></a></li>
+        <li data-t="journal"><a href="https://doi.org/10.1016/j.chb.2018.11.041" target="_blank" rel="noopener"><span class="r-type">Journal article</span><span class="r-ttl"><span class="r-tm">Overgratified, under-gratified, or just right?: Applying the gratification discrepancy approach to investigate recurrent Facebook use</span></span><span class="r-meta">Rokito, S., Choi, Y. H., Taylor, S. H., &amp; Bazarova, N. N. · Computers in Human Behavior</span></a></li>
+      </ul>
+    </section>
+    <section class="r-year" data-y="2018">
+      <h2 class="r-yr">2018</h2>
+      <ul class="r-list">
+        <li data-t="journal"><a href="https://doi.org/10.1093/joc/jqy055" target="_blank" rel="noopener"><span class="r-type">Journal article</span><span class="r-ttl"><span class="r-tm">Revisiting media multiplexity: A longitudinal test of media use in romantic relationships</span></span><span class="r-meta">Taylor, S. H., &amp; Bazarova, N. N. · Journal of Communication</span></a></li>
+        <li data-t="conf"><a href="https://doi.org/10.1145/3173574.3173785" target="_blank" rel="noopener"><span class="r-type">Conference paper</span><span class="r-ttl"><span class="r-tm">Upstanding by design: Bystander intervention in cyberbullying</span></span><span class="r-meta">DiFranzo, D., Taylor, S. H., Kazerooni, F. K., Wherry, O., &amp; Bazarova, N. N. · Proceedings of the ACM Conference on Human Factors in Computing Systems (CHI ’18)</span></a></li>
+        <li data-t="journal"><a href="https://doi.org/10.1093/jcmc/zmy005" target="_blank" rel="noopener"><span class="r-type">Journal article</span><span class="r-ttl"><span class="r-tm">Cyberbullying bystander intervention: The number of offenders and retweeting predict likelihood of helping cyberbullying victim</span></span><span class="r-meta">Kazerooni, F., Taylor, S. H., Bazarova, N. N. &amp; Whitlock, J. · Journal of Computer-Mediated Communication</span></a></li>
+        <li data-t="chapter"><a aria-disabled="true"><span class="r-type">Book chapter</span><span class="r-ttl"><span class="r-tm">Social media and subjective well-being: A relational perspective</span></span><span class="r-meta">Taylor, S. H., &amp; Bazarova, N. N. · A Networked Self and Love</span></a></li>
+      </ul>
+    </section>
+    <section class="r-year" data-y="2017">
+      <h2 class="r-yr">2017</h2>
+      <ul class="r-list">
+        <li data-t="journal"><a href="https://doi.org/10.1089/cyber.2016.0759" target="_blank" rel="noopener"><span class="r-type">Journal article</span><span class="r-ttl"><span class="r-tm">An experimental test of how selfies change social judgments on Facebook</span></span><span class="r-meta">Taylor, S. H., Hinck, A. S., &amp; Lim, H. · Cyberpsychology, Behavior, and Social Networking</span></a></li>
+        <li data-t="journal"><a href="https://doi.org/10.1177/1461444816638458" target="_blank" rel="noopener"><span class="r-type">Journal article</span><span class="r-ttl"><span class="r-tm">Extending media multiplexity theory to the extended family: Communication satisfaction and tie strength as moderators of violations of media use expectations</span></span><span class="r-meta">Taylor, S. H., &amp; Ledbetter, A. M. · New Media &amp; Society</span></a></li>
+        <li data-t="conf"><a href="https://doi.org/10.1145/3025453.3025775" target="_blank" rel="noopener"><span class="r-type">Conference paper</span><span class="r-ttl"><span class="r-tm">Social consequences of Grindr use: Extending the Internet-enhanced self-disclosure hypothesis</span></span><span class="r-meta">Taylor, S. H., Hutson, J., &amp; Alicea, T. R. · Proceedings of the ACM Conference on Human Factors in Computing Systems (CHI ’17)</span></a></li>
+        <li data-t="conf"><a href="https://doi.org/10.1145/3027063.3053246" target="_blank" rel="noopener"><span class="r-type">Conference paper</span><span class="r-ttl"><span class="r-tm">“Alexa is my new BFF”: A case study of the Amazon Echo’s social functions and roles</span></span><span class="r-meta">Purington, A., Taft, J. G., Sannon, S. H., Bazarova, N. N., &amp; Taylor, S. H. · Extended Abstracts of the ACM Conference on Human Factors in Computing Systems (CHI ’17)</span></a></li>
+      </ul>
+    </section>
+    <section class="r-year" data-y="2016">
+      <h2 class="r-yr">2016</h2>
+      <ul class="r-list">
+        <li data-t="journal"><a href="https://doi.org/10.1016/j.chb.2015.07.053" target="_blank" rel="noopener"><span class="r-type">Journal article</span><span class="r-ttl"><span class="r-tm">Enjoyment fosters media use frequency and determines its relational outcomes: Toward a synthesis of uses and gratifications theory and media multiplexity theory</span></span><span class="r-meta">Ledbetter, A. M., Taylor, S. H., &amp; Mazer, J. P. · Computers in Human Behavior</span></a></li>
+        <li data-t="journal"><a href="https://doi.org/10.12840/issn.2255-4165.2016.04.01.009" target="_blank" rel="noopener"><span class="r-type">Journal article</span><span class="r-ttl"><span class="r-tm">A long look back: An analysis of 50 years of organizational communication research (1964-2013)</span></span><span class="r-meta">Garner, J. T., Ragland, J. P., Leite, M., Young, J., Bergquist, G., Summers, S., Pool, G., Taylor, S. H., Tian, X., Reyes, E., Haynes, M., &amp; Ivy, T. · Review of Communication Research</span></a></li>
+      </ul>
+    </section>
+    <section class="r-year" data-y="2015">
+      <h2 class="r-yr">2015</h2>
+      <ul class="r-list">
+        <li data-t="journal"><a aria-disabled="true"><span class="r-type">Journal article</span><span class="r-ttl"><span class="r-tm">Entering the fold: Exploring the encounter stage of the socialization processing within the Church of Jesus Christ of Latter-Day Saints</span></span><span class="r-meta">Taylor, S. H., Young, J., Summers, S., Garner, J. T., &amp; Hinderacker, A., · Journal of Communication &amp; Religion</span></a></li>
       </ul>
     </section>
   </div>
