@@ -59,7 +59,7 @@ A blue-on-blue band, tilted 10 degrees (lower on the left), with smooth, very sl
 
 
 ## Research interests (person pages)
-Four square cards in the style of the people cards: the real net (blue with breathing cream holes) fills the top of each card and fades out above the words. Each card has one tight, bold title in cream. To add or change one, copy a line like `<li><canvas aria-hidden="true"></canvas><strong>Your interest</strong></li>`. Each card takes its own colour in turn (blue, gold, deep blue, cream) with the net in the matching contrast colour, like the people cards; on hover it lifts and leans.
+Four square cards in the style of the people cards: the real net (blue with breathing cream holes) fills the top of each card and fades out above the words. Each card has one tight, bold title in cream. To add or change one, copy a line like `<li><canvas aria-hidden="true"></canvas><strong>Your interest</strong></li>`. Each card gets a colour from the palette (blue, gold, deep blue, cream, lavender mist, dusky plum), shuffled fresh on every visit so no two neighbours match, with the net in the matching contrast colour; on hover it lifts and leans.
 
 
 ## People cards (home page)

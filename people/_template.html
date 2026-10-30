@@ -197,12 +197,15 @@ footer{position:relative;z-index:1;padding-block:clamp(110px,18vh,200px) 40px}
 .p-topics strong b{font-weight:700;color:var(--cream);transition:color .35s}
 .p-topics li{box-shadow:0 18px 30px -24px #1d386699}
 .p-topics li:hover{transform:translate(var(--hx,0),var(--hy,-8px)) rotate(var(--hr,1.5deg));box-shadow:0 30px 40px -26px #1d3866cc}
-/* each interest takes its own colour from the palette, like the people, event and resource cards */
-.p-topics li:nth-child(4n+2){background-image:linear-gradient(160deg,#f0bb5f,#e7aa4d 55%,#dc9a3e)}
-.p-topics li:nth-child(4n+2) strong{color:var(--ink)}
-.p-topics li:nth-child(4n+3){background-image:linear-gradient(160deg,#24477f,#1d3866 60%,#152b4f)}
-.p-topics li:nth-child(4n+4){background-image:none;background-color:#e9e2c9}
-.p-topics li:nth-child(4n+4) strong{color:var(--blue)}
+/* each interest gets a colour from the palette, shuffled fresh on every visit (set in the script) */
+.p-topics li.c-gold{background-image:linear-gradient(160deg,#f0bb5f,#e7aa4d 55%,#dc9a3e)}
+.p-topics li.c-gold strong{color:var(--ink)}
+.p-topics li.c-deep{background-image:linear-gradient(160deg,#24477f,#1d3866 60%,#152b4f)}
+.p-topics li.c-cream{background-image:none;background-color:#e9e2c9}
+.p-topics li.c-cream strong{color:var(--blue)}
+.p-topics li.c-lav{background-image:linear-gradient(160deg,#cfc3dd,#bfb1d2 55%,#a998c0)}
+.p-topics li.c-lav strong{color:var(--blue)}
+.p-topics li.c-plum{background-image:linear-gradient(160deg,#6b4a6e,#57385a 55%,#3f2742)}
 .p-topics li:nth-child(1){--hx:-8px;--hy:-10px;--hr:-3deg}.p-topics li:nth-child(2){--hx:6px;--hy:9px;--hr:2.5deg}.p-topics li:nth-child(3){--hx:0px;--hy:-12px;--hr:1deg}.p-topics li:nth-child(4){--hx:-7px;--hy:8px;--hr:-2deg}
 @media (max-width:760px){.p-topics{grid-template-columns:repeat(2,minmax(0,1fr))}.p-topics strong{font-size:clamp(17px,5vw,22px)}}
 .p-foot{display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px;padding-block:40px 50px;font-size:var(--step--1);}
@@ -506,7 +509,11 @@ footer{position:relative;z-index:1;padding-block:clamp(110px,18vh,200px) 40px}
   const mobile = () => innerWidth < 760;
 
   /* research interest cards: the real net (blue with cream holes, breathing) fills the top of each card and fades out above the words */
-  const cards = [...document.querySelectorAll('.p-topics li')].map((li, i) => ({ li, cv: li.querySelector('canvas'), off: [(i * .37 + .11) % 1, (i * .61 + .29) % 1], ink: i % 4 === 3 ? 'rgba(44,84,148,.85)' : 'rgba(242,238,221,.92)' })).filter(c => c.cv);
+  // shuffle the palette so each visit gives the interests a fresh mix of colours, never two the same side by side
+  const PAL = ['c-blue', 'c-gold', 'c-deep', 'c-cream', 'c-lav', 'c-plum'];
+  for (let i = PAL.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [PAL[i], PAL[j]] = [PAL[j], PAL[i]]; }
+  const cards = [...document.querySelectorAll('.p-topics li')].map((li, i) => { const c = PAL[i % PAL.length]; li.classList.add(c);
+    return { li, cv: li.querySelector('canvas'), off: [(i * .37 + .11) % 1, (i * .61 + .29) % 1], ink: c === 'c-cream' || c === 'c-lav' ? 'rgba(44,84,148,.85)' : 'rgba(242,238,221,.92)' }; }).filter(c => c.cv);
   const drawCards = time => {
     for (const { li, cv, off, ink } of cards) {
       const r = li.getBoundingClientRect(); if (r.bottom < 0 || r.top > innerHeight) continue;
